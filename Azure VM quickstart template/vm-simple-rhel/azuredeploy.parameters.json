@@ -3,10 +3,10 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "adminUsername": {
-      "value": "GEN-UNIQUE-8"
+      "value": "azureuser"
     },
     "vmName": {
-      "value": "GEN-UNIQUE-10"
+      "value": "server1"
     },
     "adminPasswordOrKey": {
       "value": "GEN-SSH-PUB-KEY"
