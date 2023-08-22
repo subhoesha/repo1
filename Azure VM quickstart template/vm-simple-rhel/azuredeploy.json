@@ -53,12 +53,12 @@
     "imageOffer": "RHEL",
     "imageSku": "7.8",
     "nicName": "[concat(uniquestring(parameters('vmName')), 'nic')]",
-    "addressPrefix": "10.0.0.0/16",
+    "addressPrefix": "10.72.126.0/25",
     "subnetName": "Subnet",
-    "subnetPrefix": "10.0.0.0/24",
-    "publicIPAddressName": "[concat(uniquestring(parameters('vmName')), 'publicip')]",
-    "publicIPAddressType": "Dynamic",
-    "virtualNetworkName": "[concat(uniquestring(parameters('vmName')), 'vnet')]",
+    "subnetPrefix": "10.72.126.0/25",
+    // "publicIPAddressName": "[concat(uniquestring(parameters('vmName')), 'publicip')]",
+    // "publicIPAddressType": "Dynamic",
+    "virtualNetworkName": "VNET A",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
     "linuxConfiguration": {
       "disablePasswordAuthentication": true,
@@ -74,15 +74,15 @@
     "networkSecurityGroupName": "default-NSG"
   },
   "resources": [
-    {
-      "apiVersion": "2020-05-01",
-      "type": "Microsoft.Network/publicIPAddresses",
-      "name": "[variables('publicIPAddressName')]",
-      "location": "[parameters('location')]",
-      "properties": {
-        "publicIPAllocationMethod": "[variables('publicIPAddressType')]"
-      }
-    },
+    // {
+      // "apiVersion": "2020-05-01",
+      // "type": "Microsoft.Network/publicIPAddresses",
+      // "name": "[variables('publicIPAddressName')]",
+      // "location": "[parameters('location')]",
+      // "properties": {
+        // "publicIPAllocationMethod": "[variables('publicIPAddressType')]"
+      // }
+    // },
     {
       "comments": "Default Network Security Group for template",
       "type": "Microsoft.Network/networkSecurityGroups",
@@ -140,7 +140,7 @@
       "name": "[variables('nicName')]",
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
+        // "[resourceId('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
         "[resourceId('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
       ],
       "properties": {
@@ -149,9 +149,9 @@
             "name": "ipconfig1",
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
-              "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]"
-              },
+              // "publicIPAddress": {
+                // "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]"
+              // },
               "subnet": {
                 "id": "[variables('subnetRef')]"
               }
