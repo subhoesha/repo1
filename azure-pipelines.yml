@@ -10,7 +10,7 @@ stages :
         steps:
               - checkout: self
  
-              - task: AzureResourceManagerTemplateDeployment@3
+              - task: AzureResourceManagerTemplateDeployment
                 inputs:
                   deploymentScope: 'Resource Group'
                   azureResourceManagerConnection: 'service_connection'
