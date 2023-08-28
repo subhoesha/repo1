@@ -14,10 +14,10 @@ stages :
                 inputs:
                   deploymentScope: 'Resource Group'
                   azureResourceManagerConnection: 'service_connection'
-                  subscriptionId: '123456'
+                  subscriptionId: '003b772f-91e8-40ec-9470-b63ff9aac613'
                   action: 'Create Or Update Resource Group'
-                  resourceGroupName: 'test'
-                  location: 'westeurope'
+                  resourceGroupName: 'RGLab2_1'
+                  location: 'northeurope'
                   templateLocation: 'Linked artifact'
                   csmFile: '$(System.DefaultWorkingDirectory)/vnet.json'
                   csmParametersFile: '$(System.DefaultWorkingDirectory)/vnet.parameters.json'
